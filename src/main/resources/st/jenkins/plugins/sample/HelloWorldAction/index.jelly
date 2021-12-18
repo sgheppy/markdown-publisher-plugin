@@ -7,8 +7,8 @@
             </h1>
             <div id="mdit">
             </div>
-            <script src="${rootURL}/plugin/sthelloworld/js/markdown-it.min.js"/>
-            <script src="${rootURL}/plugin/sthelloworld/js/mark.js"/>
+            <script src="${rootURL}/plugin/markdownpublisher/js/markdown-it.min.js"/>
+            <script src="${rootURL}/plugin/markdownpublisher/js/mark.js"/>
         </l:main-panel>
     </l:layout>
 </j:jelly>
