@@ -6,6 +6,7 @@
                 Name: ${it.name}
             </h1>
             <div id="mdit">
+                ${it.name} 
             </div>
             <script src="${rootURL}/plugin/markdownpublisher/js/markdown-it.min.js"/>
             <script src="${rootURL}/plugin/markdownpublisher/js/mark.js"/>

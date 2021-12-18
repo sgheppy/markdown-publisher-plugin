@@ -54,7 +54,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         }
     }
 
-    @Symbol("greet")
+    @Symbol("markdown")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 

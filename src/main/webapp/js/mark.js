@@ -1,4 +1,4 @@
 var md = window.markdownit();
 var div = document.getElementById('mdit');
-div.innerHTML += md.render("# test markdown");
+div.innerHTML = md.render(div.textContent);
 
