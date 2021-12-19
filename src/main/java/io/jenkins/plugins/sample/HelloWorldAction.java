@@ -1,4 +1,4 @@
-package st.jenkins.plugins.sample;
+package io.jenkins.plugins.sample;
 
 import hudson.model.Action;
 
@@ -6,13 +6,19 @@ public class HelloWorldAction implements Action {
 
 
     private String name;
+    private String mdtext;
 
-    public HelloWorldAction(String name) {
+    public HelloWorldAction(String name, String mdtext) {
         this.name = name;
+        this.mdtext = mdtext;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getMdtext() {
+        return mdtext;
     }
 
     @Override

@@ -19,18 +19,27 @@ import jenkins.tasks.SimpleBuildStep;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundSetter;
 
+
+
 public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     private final String name;
+    private final String mdtext;
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name) {
+    public HelloWorldBuilder(String name, String mdtext) {
         this.name = name;
+        this.mdtext = mdtext;
+        //this.mdtext = "test";
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getMdtext() {
+        return mdtext;
     }
 
     public boolean isUseFrench() {
@@ -44,6 +53,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, EnvVars env, Launcher launcher, TaskListener listener) throws InterruptedException, IOException {
+        run.addAction(new HelloWorldAction(name, mdtext));
         if (useFrench) {
             listener.getLogger().println("Bonjour, " + name + "!");
         } else {
@@ -51,11 +61,11 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         }
     }
 
-    @Symbol("greet")
+    @Symbol("markdown")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
-        public FormValidation doCheckName(@QueryParameter String value, @QueryParameter boolean useFrench)
+        public FormValidation doCheckName(@QueryParameter String value, @QueryParameter String mdtext, @QueryParameter boolean useFrench)
                 throws IOException, ServletException {
             if (value.length() == 0)
                 return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingName());
@@ -80,3 +90,5 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     }
 
 }
+
+
